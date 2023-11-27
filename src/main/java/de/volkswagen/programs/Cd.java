@@ -5,7 +5,7 @@ public class Cd implements CommandlineProgram {
 
     @Override
     public void run(String[] args) {
-        if (args.length == 0) {
+        if (args[0].contains("-help")) {
             help();
             return;
         }
