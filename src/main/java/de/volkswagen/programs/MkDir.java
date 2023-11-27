@@ -1,6 +1,7 @@
 package de.volkswagen.programs;
 
 import java.io.File;
+import java.nio.file.Path;
 
 public class MkDir implements CommandlineProgram {
     @Override
@@ -14,9 +15,8 @@ public class MkDir implements CommandlineProgram {
             System.out.println("No arguments");
             return;
         }
-        //TODO Change to Singleton variant
-        String url = System.getProperty("user.dir");
-        boolean created = new File(url + "/" + arg).mkdir();
+        Path url = InMemoryCacheSingleton.getInstance().getCurrentPath();
+        boolean created = new File(url.toString() + "/" + arg).mkdir();
         if (created) {
             System.out.println("Directory created");
         } else {
