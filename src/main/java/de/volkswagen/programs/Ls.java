@@ -16,6 +16,7 @@ public class Ls implements CommandlineProgram {
         }
         int count = 0;
         File file = new File(url);
+        //TODO Change to Singleton variant
         if (file.isDirectory()) {
             for (File f : Objects.requireNonNull(file.listFiles())) {
                 System.out.println(f.getName() + " " + f.length() + " bytes");
