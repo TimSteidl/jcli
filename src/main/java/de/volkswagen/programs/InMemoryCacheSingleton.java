@@ -6,8 +6,8 @@ import java.util.List;
 
 public class InMemoryCacheSingleton {
 
-    private InMemoryCacheSingleton instance;
-    private List<String> commandHistory = new ArrayList();
+    private static InMemoryCacheSingleton instance;
+    private final List<String> commandHistory = new ArrayList();
 
     private Path currentPath;
 
@@ -15,24 +15,24 @@ public class InMemoryCacheSingleton {
         this.currentPath = Path.of(System.getProperty("user.dir"));
     }
 
-    public InMemoryCacheSingleton getInstance() {
-        if (this.instance == null) {
+    public static InMemoryCacheSingleton getInstance() {
+        if (instance == null) {
             synchronized (InMemoryCacheSingleton.class) {
-                if (this.instance == null) {
-                    this.instance = new InMemoryCacheSingleton();
+                if (instance == null) {
+                    instance = new InMemoryCacheSingleton();
                 }
             }
         }
-        
-        return this.instance;
-    }
 
-    public void setCurrentPath(Path actualPath) {
-        this.currentPath = actualPath;
+        return instance;
     }
 
     public Path getCurrentPath() {
         return this.currentPath;
+    }
+
+    public void setCurrentPath(Path actualPath) {
+        this.currentPath = actualPath;
     }
 
     public void addCommandToHistory(String command) {
@@ -42,8 +42,6 @@ public class InMemoryCacheSingleton {
     public List<String> getCommandHistory() {
         return this.commandHistory;
     }
-
-
 
 
 }

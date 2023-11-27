@@ -7,8 +7,9 @@ public class Ls implements CommandlineProgram {
 
     @Override
     public void run(String[] args) {
+
         //String url = args[0];
-        String url = System.getProperty("user.dir");
+        String url =
         String arg = "-help";
         if (arg.contains("-help")) {
             help();
