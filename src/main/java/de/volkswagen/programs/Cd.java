@@ -1,13 +1,19 @@
 package de.volkswagen.programs;
 
-import de.volkswagen.utils.ProgramUtils;
-
 public class Cd implements CommandlineProgram {
 
 
     @Override
     public void run(String[] args) {
-        help();
+        if (args[0].contains("-help")) {
+            help();
+            return;
+        }
+        String path = args[0];
+        if (args[0].equals("..")) {
+            InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().getParent());
+        } else {
+            InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().resolve(path));
+        }
     }
-
 }

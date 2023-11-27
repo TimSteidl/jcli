@@ -9,7 +9,8 @@ public class ProgramUtils {
             "Ls", "List directory contents",
             "Echo", "Write arguments to the standard output",
             "Rm", "Remove files or directories",
-            "MkDir", "Create directories");
+            "MkDir", "Create directories",
+            "Man", "Format and display the on-line manual pages");
 
 
 }
