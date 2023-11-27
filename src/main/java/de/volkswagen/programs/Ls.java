@@ -8,10 +8,12 @@ public class Ls implements CommandlineProgram {
 
     @Override
     public void run(String[] args) {
-
+        
         //String url = args[0];
+
         Path url = InMemoryCacheSingleton.getInstance().getCurrentPath();
         String arg = "";
+      
         if (arg.contains("-help")) {
             help();
             return;
