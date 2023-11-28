@@ -18,7 +18,7 @@ public class Mkdir implements CommandlineProgram {
             return;
         }
         Path url = InMemoryCacheSingleton.getInstance().getCurrentPath();
-        boolean created = new File(url.toString() + "/" + arg).mkdir();
+        boolean created = new File(url.toString(), arg).mkdir();
         if (created) {
             System.out.println("Directory created");
         } else {
