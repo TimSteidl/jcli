@@ -25,12 +25,13 @@ public class CommandLineRunner {
                 isRunning = false;
             } else {
                 try {
-                    System.out.println("de.volkswagen.programs." + splitCommands[0]);
                     Class<?> clazz = Class.forName("de.volkswagen.programs." + splitCommands[0]);
                     Constructor<?> ctor = clazz.getConstructor();
                     program = (CommandlineProgram) ctor.newInstance();
                     program.run(splitCommands);
-                } catch (ClassNotFoundException  | InstantiationException  | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException | NoClassDefFoundError e){
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                         IllegalArgumentException | NoSuchMethodException | InvocationTargetException |
+                         NoClassDefFoundError e) {
                     System.out.println("Command not found. Use 'man' for help");
                 }
             }
@@ -46,10 +47,10 @@ public class CommandLineRunner {
         if (stringArray[0].length() >= 1) {
             char firstChar = stringArray[0].charAt(0);
             firstChar = Character.toUpperCase(firstChar);
-            if(stringArray[0].length() >= 2) {
-                stringArray[0] = firstChar + stringArray[0].substring(1, stringArray[0].length());
+            if (stringArray[0].length() >= 2) {
+                stringArray[0] = firstChar + stringArray[0].substring(1);
             } else {
-                stringArray[0] = firstChar + "";
+                stringArray[0] = String.valueOf(firstChar);
             }
         }
         return stringArray;
