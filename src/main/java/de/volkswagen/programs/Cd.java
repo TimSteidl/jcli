@@ -9,7 +9,12 @@ public class Cd implements CommandlineProgram {
             help();
             return;
         }
-        String path = args[0];
+        System.out.println("arg");
+        if (args.length == 1) {
+            System.out.println("No path given");
+            return;
+        }
+        String path = args[1];
         if (args[0].equals("..")) {
             InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().getParent());
         } else {

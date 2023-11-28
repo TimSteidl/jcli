@@ -3,7 +3,7 @@ package de.volkswagen.utils;
 
 import java.util.Map;
 
-public class ProgramUtils {
+public final class ProgramUtils {
 
     public static final Map<String, String> PROGRAM_HELP = Map.of("Cd", "Change directory",
             "Ls", "List directory contents",
@@ -11,6 +11,9 @@ public class ProgramUtils {
             "Rm", "Remove files or directories",
             "MkDir", "Create directories",
             "Man", "Format and display the on-line manual pages");
+
+    private ProgramUtils() {
+    }
 
 
 }

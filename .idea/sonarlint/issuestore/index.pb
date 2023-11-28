@@ -46,3 +46,5 @@ S
 -.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
 p
 @src/main/java/de/volkswagen/programs/InMemoryCacheSingleton.java,a\6\a678f4915c296c60d527ac83624e8c7d359d834a
+b
+2src/main/java/de/volkswagen/CommandLineRunner.java,d\2\d279b4be3f67b37eab338595456b8061e0add5a9
