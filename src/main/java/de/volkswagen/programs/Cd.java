@@ -1,5 +1,7 @@
 package de.volkswagen.programs;
 
+import java.nio.file.Path;
+
 public class Cd implements CommandlineProgram {
 
 
@@ -17,7 +19,9 @@ public class Cd implements CommandlineProgram {
         if (args[1].equals("..")) {
             InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().getParent());
         } else {
-            InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().resolve(path));
+            if (Path.of(path).toFile().isDirectory()) {
+                InMemoryCacheSingleton.getInstance().setCurrentPath(InMemoryCacheSingleton.getInstance().getCurrentPath().resolve(path));
+            }
         }
     }
 }
