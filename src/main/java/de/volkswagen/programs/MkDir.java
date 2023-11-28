@@ -3,7 +3,7 @@ package de.volkswagen.programs;
 import java.io.File;
 import java.nio.file.Path;
 
-public class MkDir implements CommandlineProgram {
+public class Mkdir implements CommandlineProgram {
     @Override
     public void run(String[] args) {
         String arg = "";
