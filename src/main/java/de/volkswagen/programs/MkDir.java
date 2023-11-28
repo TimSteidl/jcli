@@ -6,12 +6,14 @@ import java.nio.file.Path;
 public class MkDir implements CommandlineProgram {
     @Override
     public void run(String[] args) {
-        String arg = args[0];
-        if (arg.contains("-help")) {
-            help();
-            return;
-        }
-        if (args.length == 0) {
+        String arg = "";
+        if (args.length > 1) {
+            arg = args[1];
+            if (arg.contains("-help")) {
+                help();
+                return;
+            }
+        } else {
             System.out.println("No arguments");
             return;
         }

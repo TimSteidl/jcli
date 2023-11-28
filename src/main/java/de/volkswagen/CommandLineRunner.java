@@ -1,11 +1,11 @@
 package de.volkswagen;
 
+import de.volkswagen.programs.CommandlineProgram;
+import de.volkswagen.programs.InMemoryCacheSingleton;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
-
-import de.volkswagen.programs.CommandlineProgram;
-import de.volkswagen.programs.InMemoryCacheSingleton;
 
 public class CommandLineRunner {
 
@@ -25,8 +25,8 @@ public class CommandLineRunner {
                 isRunning = false;
             } else {
                 try {
-                    System.out.println("de.volkswagen.programs."+splitCommands[0]);
-                    Class<?> clazz = Class.forName("de.volkswagen.programs."+splitCommands[0]);
+                    System.out.println("de.volkswagen.programs." + splitCommands[0]);
+                    Class<?> clazz = Class.forName("de.volkswagen.programs." + splitCommands[0]);
                     Constructor<?> ctor = clazz.getConstructor();
                     program = (CommandlineProgram) ctor.newInstance();
                     program.run(splitCommands);
@@ -41,6 +41,7 @@ public class CommandLineRunner {
 
     }
 
+
     private String[] firstCharToUppercase(String[] stringArray) {
         if (stringArray[0].length() >= 1) {
             char firstChar = stringArray[0].charAt(0);
@@ -53,5 +54,4 @@ public class CommandLineRunner {
         }
         return stringArray;
     }
-    
 }
