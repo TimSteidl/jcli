@@ -20,7 +20,7 @@ public class CommandLineRunner {
         while (isRunning) {
             System.out.print(cache.getCurrentPath() + " >>> ");
             command = sc.nextLine();
-            splitCommands = command.split(" ");
+            splitCommands = firstCharToUppercase(command.split(" "));
             if (splitCommands[0].equalsIgnoreCase("exit")) {
                 isRunning = false;
             } else {
@@ -30,7 +30,7 @@ public class CommandLineRunner {
                     Constructor<?> ctor = clazz.getConstructor();
                     program = (CommandlineProgram) ctor.newInstance();
                     program.run(splitCommands);
-                } catch (ClassNotFoundException  | InstantiationException  | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException e){
+                } catch (ClassNotFoundException  | InstantiationException  | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException | NoClassDefFoundError e){
                     System.out.println("Command not found. Use 'man' for help");
                 }
             }
@@ -39,6 +39,19 @@ public class CommandLineRunner {
 
         sc.close();
 
+    }
+
+    private String[] firstCharToUppercase(String[] stringArray) {
+        if (stringArray[0].length() >= 1) {
+            char firstChar = stringArray[0].charAt(0);
+            firstChar = Character.toUpperCase(firstChar);
+            if(stringArray[0].length() >= 2) {
+                stringArray[0] = firstChar + stringArray[0].substring(1, stringArray[0].length());
+            } else {
+                stringArray[0] = firstChar + "";
+            }
+        }
+        return stringArray;
     }
     
 }
